@@ -15,4 +15,8 @@
     </string>
     <string name="min">Min</string>
     <string name="max">Max</string>
+    <string name="exercice_integre">Exercice intégré</string>
+    <string name="temperature">Température(°C) :</string>
+    <string name="humidity">Humidité(%) :</string>
+    <string name="battery">Battery Level(%) :</string>
 </resources>

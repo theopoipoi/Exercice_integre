@@ -29,12 +29,16 @@ public class LoginActivity extends AppCompatActivity  {
     //Declaration DatabaseHelper
     DatabaseHelper DatabaseHelper;
 
+    Intent intent;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         DatabaseHelper = new DatabaseHelper(this);
         initViews();
+        intent = new Intent(getApplicationContext(), SecondActivity.class);
 
 
         //set click event of login button
@@ -59,14 +63,16 @@ public class LoginActivity extends AppCompatActivity  {
                         currentUser.setPassword(Integer.parseInt(Password));
 
 
-                        if (DatabaseHelper.checkUser(Username) == true) {
+                        if (DatabaseHelper.checkUser(Username)) {
                             Toast.makeText(getApplicationContext(), "Successfully Logged in!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), "Successfully Sign in!", Toast.LENGTH_SHORT).show();
                             DatabaseHelper.addUser(currentUser);
                             System.out.println(DatabaseHelper.getAllUser());
                         }
-                    }
+                        intent.putExtra("name", currentUser.getUsername());
+                        startActivity(intent);
+                        }
 
 
 
