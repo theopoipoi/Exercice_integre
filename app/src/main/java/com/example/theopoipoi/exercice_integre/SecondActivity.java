@@ -30,15 +30,18 @@ public class SecondActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         TextView textView = (TextView) findViewById(R.id.view_username);
+        //We display the text "hello" with the name of the user sent from the previous activity
         String Hello = "Hello "+getIntent().getStringExtra("name")+"!";
         textView.setText(Hello);
         initViews();
         DatabaseHelper = new DatabaseHelper(this);
 
+        //Listener on the Confirm button
         confirm_button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
+                //We recover the text in the edittext and we convert it into an integer
                 int battery_min  = Integer.parseInt(edit_min_battery.getText().toString());
                 int battery_max  = Integer.parseInt(edit_max_battery.getText().toString());
                 int temperature_min  = Integer.parseInt(edit_min_temp.getText().toString());
@@ -47,6 +50,7 @@ public class SecondActivity extends AppCompatActivity{
                 int humidity_max  = Integer.parseInt(edit_max_hum.getText().toString());
                 String phone  = edit_phone.getText().toString();
 
+                //We attribute some values to the user
                 currentUser.setUsername(getIntent().getStringExtra("name"));
                 currentUser.setBattery_max(battery_max);
                 currentUser.setBattery_min(battery_min);
@@ -55,9 +59,8 @@ public class SecondActivity extends AppCompatActivity{
                 currentUser.setTemperature_max(temperature_max);
                 currentUser.setTemperature_min(temperature_min);
                 currentUser.setPhone(phone);
-                Log.w("nom utilisateur",currentUser.getUsername());
-                Log.w("Tous les users", DatabaseHelper.getAllUser().toString());
 
+                //We update the DB with this news values
                 DatabaseHelper.updateUser(currentUser); //Modifier addInformations
 
 
@@ -67,6 +70,8 @@ public class SecondActivity extends AppCompatActivity{
 
         });
     }
+
+    //this method is used to connect XML views to its Objects
     private void initViews() {
         confirm_button = (Button)findViewById(R.id.confirm_button);
         edit_min_battery = (EditText)findViewById(R.id.edit_min_battery);

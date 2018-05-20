@@ -1,6 +1,8 @@
 package com.example.theopoipoi.exercice_integre;
 
 public class User {
+    //Create a user with the same attributes as the table in the DB
+    //This is the informations of the user
     private String username;
     private int password;
     private int battery_min;

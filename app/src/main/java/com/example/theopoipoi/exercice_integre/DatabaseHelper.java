@@ -91,24 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addInformations(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_TEMPERATURE_MAX, user.getTemperature_max());
-        values.put(COLUMN_USER_TEMPERATURE_MIN, user.getTemperature_min());
-        values.put(COLUMN_USER_BATTERY_MAX, user.getBattery_max());
-        values.put(COLUMN_USER_BATTERY_MIN, user.getBattery_min());
-        values.put(COLUMN_USER_HUMIDITY_MAX, user.getHumidity_max());
-        values.put(COLUMN_USER_HUMIDITY_MIN, user.getHumidity_min());
-        values.put(COLUMN_USER_PHONE, user.getPhone());
-
-        //String sql = "SELECT " + user.getUsername() +" FROM " + TABLE_USER + " UPDATE " + TABLE_USER +""+ (COLUMN_USER_BATTERY_MAX)+ " VALUES ("+user.getBattery_max()+");" ;
-        //db.insert(TABLE_USER, null, values);
-        String sql = "UPDATE "+TABLE_USER+ " SET " + COLUMN_USER_PHONE +" = "+ user.getPhone()+ " WHERE "+ COLUMN_USER_NAME +" = " + user.getUsername() +";";
-        db.execSQL(sql);
-        db.close();
-    }
 
     /**
      * This method is to fetch all user and return the list of user records
@@ -170,8 +152,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        //values.put(COLUMN_USER_NAME, user.getUsername());
-        //values.put(COLUMN_USER_PASSWORD, user.getPassword());
         values.put(COLUMN_USER_TEMPERATURE_MAX, user.getTemperature_max());
         values.put(COLUMN_USER_TEMPERATURE_MIN, user.getTemperature_min());
         values.put(COLUMN_USER_BATTERY_MAX, user.getBattery_max());
@@ -182,9 +162,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         // updating row
-        //db.update(TABLE_USER, values, COLUMN_USER_NAME + " = ?", new String[]{String.valueOf(user.getUsername())});
-        //db.update(TABLE_USER, values, "COLUMN_USER_NAME =" + user.getUsername(), null);
-        //db.update(TABLE_USER, values, COLUMN_USER_NAME + "=" + user.getUsername(), new String[]{String.valueOf(user.getUsername())});
         db.update(TABLE_USER, values, COLUMN_USER_NAME + "= ?", new String[]{String.valueOf(user.getUsername())});
         db.close();
     }
