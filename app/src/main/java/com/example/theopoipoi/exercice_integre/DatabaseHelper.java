@@ -34,16 +34,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + " ("
-            + COLUMN_USER_NAME + " STRING PRIMARY KEY, "
-            + COLUMN_USER_PASSWORD + " INT(4) not null, "
-            + COLUMN_USER_BATTERY_MAX + " INT, "
-            + COLUMN_USER_BATTERY_MIN + " INT, "
-            + COLUMN_USER_TEMPERATURE_MAX + " INT, "
-            + COLUMN_USER_TEMPERATURE_MIN + " INT, "
-            + COLUMN_USER_HUMIDITY_MAX + " INT, "
-            + COLUMN_USER_HUMIDITY_MIN + " INT, "
-            + COLUMN_USER_PHONE + " STRING"
-            + ");";
+            + COLUMN_USER_NAME + " VARCHAR PRIMARY KEY,"
+            + COLUMN_USER_PASSWORD + " INT(4) not null,"
+            + COLUMN_USER_BATTERY_MAX + " INT,"
+            + COLUMN_USER_BATTERY_MIN + " INT,"
+            + COLUMN_USER_TEMPERATURE_MAX + " INT,"
+            + COLUMN_USER_TEMPERATURE_MIN + " INT,"
+            + COLUMN_USER_HUMIDITY_MAX + " INT,"
+            + COLUMN_USER_HUMIDITY_MIN + " INT,"
+            + COLUMN_USER_PHONE + " VARCHAR"
+            + ")";
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
