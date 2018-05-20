@@ -184,7 +184,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // updating row
         //db.update(TABLE_USER, values, COLUMN_USER_NAME + " = ?", new String[]{String.valueOf(user.getUsername())});
         //db.update(TABLE_USER, values, "COLUMN_USER_NAME =" + user.getUsername(), null);
-        db.update(TABLE_USER, values, COLUMN_USER_NAME + "=" + user.getUsername(), new String[]{String.valueOf(user.getUsername())});
+        //db.update(TABLE_USER, values, COLUMN_USER_NAME + "=" + user.getUsername(), new String[]{String.valueOf(user.getUsername())});
+        db.update(TABLE_USER, values, COLUMN_USER_NAME + "= ?", new String[]{String.valueOf(user.getUsername())});
         db.close();
     }
 
