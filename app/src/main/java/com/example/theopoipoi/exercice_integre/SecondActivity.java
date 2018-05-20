@@ -56,6 +56,7 @@ public class SecondActivity extends AppCompatActivity{
                 currentUser.setTemperature_min(temperature_min);
                 currentUser.setPhone(phone);
                 Log.w("nom utilisateur",currentUser.getUsername());
+                Log.w("Tous les users", DatabaseHelper.getAllUser().toString());
 
                 DatabaseHelper.updateUser(currentUser); //Modifier addInformations
 

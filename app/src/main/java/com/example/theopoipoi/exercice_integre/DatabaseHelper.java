@@ -34,15 +34,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + " ("
-            + COLUMN_USER_NAME + " STRING PRIMARY KEY,"
+            + COLUMN_USER_NAME + " STRING PRIMARY KEY, "
             + COLUMN_USER_PASSWORD + " INT(4) not null, "
-            + COLUMN_USER_BATTERY_MAX + " INT not null, "
-            + COLUMN_USER_BATTERY_MIN + " INT not null, "
-            + COLUMN_USER_TEMPERATURE_MAX + " INT not null, "
-            + COLUMN_USER_TEMPERATURE_MIN + " INT not null, "
-            + COLUMN_USER_HUMIDITY_MAX + " INT not null, "
-            + COLUMN_USER_HUMIDITY_MIN + " INT not null, "
-            + COLUMN_USER_PHONE + " STRING not null "
+            + COLUMN_USER_BATTERY_MAX + " INT, "
+            + COLUMN_USER_BATTERY_MIN + " INT, "
+            + COLUMN_USER_TEMPERATURE_MAX + " INT, "
+            + COLUMN_USER_TEMPERATURE_MIN + " INT, "
+            + COLUMN_USER_HUMIDITY_MAX + " INT, "
+            + COLUMN_USER_HUMIDITY_MIN + " INT, "
+            + COLUMN_USER_PHONE + " STRING"
             + ");";
 
     // drop table sql query
@@ -119,7 +119,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // array of columns to fetch
         String[] columns = {
                 COLUMN_USER_NAME,
-                COLUMN_USER_PASSWORD
+                COLUMN_USER_PASSWORD,
+                COLUMN_USER_TEMPERATURE_MIN,
         };
         // sorting orders
         String sortOrder =
@@ -182,7 +183,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // updating row
         //db.update(TABLE_USER, values, COLUMN_USER_NAME + " = ?", new String[]{String.valueOf(user.getUsername())});
-        db.update(TABLE_USER, values, "COLUMN_USER_NAME=" + user.getUsername(), null);
+        //db.update(TABLE_USER, values, "COLUMN_USER_NAME =" + user.getUsername(), null);
+        db.update(TABLE_USER, values, COLUMN_USER_NAME + "=" + user.getUsername(), new String[]{String.valueOf(user.getUsername())});
         db.close();
     }
 
