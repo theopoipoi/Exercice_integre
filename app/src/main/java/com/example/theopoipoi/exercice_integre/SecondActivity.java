@@ -57,7 +57,7 @@ public class SecondActivity extends AppCompatActivity{
                 currentUser.setPhone(phone);
                 Log.w("nom utilisateur",currentUser.getUsername());
 
-                DatabaseHelper.addInformations(currentUser); //Modifier addInformations
+                DatabaseHelper.updateUser(currentUser); //Modifier addInformations
 
 
 
