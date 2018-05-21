@@ -1,5 +1,6 @@
 package com.example.theopoipoi.exercice_integre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,12 @@ public class SecondActivity extends AppCompatActivity{
 
                 //We update the DB with this news values
                 DatabaseHelper.updateUser(currentUser); //Modifier addInformations
+
+                //Send to the next activity
+                Intent intent;
+                intent = new Intent(getApplicationContext(), ThirdActivity.class);
+                intent.putExtra("name", currentUser.getUsername());
+                startActivity(intent);
 
 
 
