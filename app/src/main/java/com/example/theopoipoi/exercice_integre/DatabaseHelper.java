@@ -231,10 +231,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //This method is used to get informations about a table (an integer)
-    public Integer getinfo(int index){
+    public Integer getinfo(int index, String username){
         Integer res = new Integer(0) ;
         String query = "Select * FROM " + TABLE_USER;
         SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * FROM " + TABLE_USER + " WHERE " + COLUMN_USER_NAME + " = ?", new String [] {username});
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             res = cursor.getInt(index);
@@ -250,7 +251,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getNumber (String username) {
         String numb = new String();
-        String query = "Select "+ COLUMN_USER_PHONE + " FROM " + TABLE_USER + " WHERE " + COLUMN_USER_NAME + " = ?" + username +";";
         SQLiteDatabase db = this.getWritableDatabase();
         //Cursor cursor = db.rawQuery(query, null);
         Cursor cursor = db.rawQuery("Select "+ COLUMN_USER_PHONE + " FROM " + TABLE_USER + " WHERE " + COLUMN_USER_NAME + " = ?", new String [] {username});
